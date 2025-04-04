@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "496941166070",
+    "project_id": "vpn-client-service-test",
+    "storage_bucket": "vpn-client-service-test.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496941166070:android:8f86edeba0eca99cd26bd7",
+        "android_client_info": {
+          "package_name": "com.example.vpn_client_service_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUOkJXy7QO9O3ldyp96JEXdqqdEz7oUGo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
