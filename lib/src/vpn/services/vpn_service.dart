@@ -5,7 +5,8 @@ import 'package:vpn_client_service_test/src/vpn/domain/entities/vpn_connection.d
 import 'dart:convert';
 
 class VpnService {
-  static const String _connectionsKey = 'vpn_connections';
+  // Делаем константу публичной для доступа из тестов
+  static const String connectionsKey = 'vpn_connections';
 
   // Подключение к VPN сервису
   Future<bool> connect() async {
@@ -24,7 +25,7 @@ class VpnService {
     try {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       final List<String> existingData =
-          prefs.getStringList(_connectionsKey) ?? [];
+          prefs.getStringList(connectionsKey) ?? [];
 
       // Преобразование объекта в JSON и добавление в список
       existingData.add(jsonEncode(connection.toMap()));
@@ -34,7 +35,7 @@ class VpnService {
         existingData.removeAt(0);
       }
 
-      await prefs.setStringList(_connectionsKey, existingData);
+      await prefs.setStringList(connectionsKey, existingData);
     } catch (e) {
       log('Error saving connection: $e');
     }
@@ -44,7 +45,7 @@ class VpnService {
   Future<List<VpnConnection>> getConnections() async {
     try {
       final SharedPreferences prefs = await SharedPreferences.getInstance();
-      final List<String> data = prefs.getStringList(_connectionsKey) ?? [];
+      final List<String> data = prefs.getStringList(connectionsKey) ?? [];
 
       return data.map((string) {
         final Map<String, dynamic> map = jsonDecode(string);
