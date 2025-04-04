@@ -1,4 +1,4 @@
-# VPN Client
+# VPN Client(Moc)
 
 Мобильное приложение для управления VPN-подключением с функционалом аналитики использования.
 
@@ -35,24 +35,37 @@ VPN Client - это Flutter-приложение, предоставляющее
 
 ```
 lib/
-  ├── blocs/               # Блоки бизнес-логики (BLoC)
-  │   ├── vpn_bloc.dart    # Управление состоянием VPN
-  │   ├── vpn_event.dart   # События VPN
-  │   └── vpn_state.dart   # Состояния VPN
-  ├── models/              # Модели данных
-  │   └── vpn_connection.dart  # Модель для VPN-подключения
-  ├── screens/             # Экраны приложения
-  │   ├── vpn_screen.dart  # Основной экран VPN
-  │   └── analytics_screen.dart # Экран аналитики
-  ├── services/            # Сервисы
-  │   ├── vpn_service.dart # Сервис для работы с VPN
-  │   └── analytics_service.dart # Сервис аналитики
-  ├── widgets/             # Многоразовые виджеты
-  │   ├── connection_button.dart   # Кнопка подключения
-  │   ├── connection_status.dart   # Отображение статуса
-  │   ├── connection_timer.dart    # Таймер подключения
-  │   └── connection_history.dart  # История подключений
-  └── main.dart            # Точка входа в приложение
+├── app.dart                          # Основной виджет приложения
+├── common/
+│   └── app_theme.dart                # Глобальные темы и стили
+├── core/
+│   └── app_bloc_observer.dart        # Наблюдатель за событиями BLoC
+├── firebase_options.dart             # Настройки Firebase
+├── main.dart                         # Точка входа
+└── src/
+    ├── metrics_vpn/
+    │   ├── presentation/
+    │   │   └── view/
+    │   │       └── analytics_screen.dart     # Экран аналитики
+    │   └── services/
+    │       └── analytics_service.dart        # Сервис аналитики
+    └── vpn/
+        ├── domain/
+        │   └── entities/
+        │       └── vpn_connection.dart       # Модель VPN-подключения
+        ├── presentation/
+        │   ├── blocs/                        # Блоки бизнес-логики (BLoC)
+        │   │   ├── vpn_bloc.dart             # BLoC для VPN
+        │   │   └── vpn_bloc.freezed.dart     # Сгенерированный код
+        │   └── view/
+        │       ├── connection_history.dart   # История подключений
+        │       ├── vpn_screen.dart           # Экран VPN
+        │       └── widgets/
+        │           ├── connection_button.dart  # Кнопка подключения
+        │           ├── connection_status.dart  # Статус VPN
+        │           └── connection_timer.dart   # Таймер
+        └── services/
+            └── vpn_service.dart              # VPN-сервис
 ```
 
 ## Технологии и библиотеки
